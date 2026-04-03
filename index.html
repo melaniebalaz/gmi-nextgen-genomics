@@ -330,7 +330,8 @@
       }
 
       .stats-grid,
-      .research-grid {
+      .research-grid,
+      .cases-grid {
         display: grid;
         gap: 1.5rem;
       }
@@ -341,6 +342,14 @@
 
       .research-grid {
         grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      }
+
+      .cases-grid {
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      }
+
+      .cases-section {
+        background: #fff;
       }
 
       .card,
@@ -533,6 +542,14 @@
         line-height: 1.25;
       }
 
+      .member-card h3 a {
+        color: inherit;
+      }
+
+      .member-card h3 a:hover {
+        color: var(--accent);
+      }
+
       .portrait {
         width: 3.9rem;
         height: 3.9rem;
@@ -585,17 +602,190 @@
         gap: 1rem;
       }
 
+      .publication-button {
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        text-align: left;
+        color: inherit;
+        cursor: pointer;
+      }
+
       .publication-item {
         display: flex;
         align-items: flex-start;
         gap: 1rem;
         padding: 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        background: #fff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      }
+
+      .publication-item:hover,
+      .publication-button:focus-visible {
+        border-color: rgba(52, 177, 179, 0.65);
+        box-shadow: 0 16px 32px rgba(10, 28, 45, 0.08);
+      }
+
+      .cases-card {
+        overflow: hidden;
+      }
+
+      .cases-image {
+        aspect-ratio: 4 / 3;
+        display: grid;
+        place-items: center;
+        border-bottom: 1px solid var(--border);
+        background:
+          linear-gradient(135deg, rgba(52, 177, 179, 0.16), rgba(22, 53, 82, 0.1)),
+          repeating-linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0.62) 0,
+            rgba(255, 255, 255, 0.62) 16px,
+            rgba(255, 255, 255, 0.22) 16px,
+            rgba(255, 255, 255, 0.22) 32px
+          );
+        color: var(--accent);
+      }
+
+      .cases-image svg {
+        width: 2.1rem;
+        height: 2.1rem;
+      }
+
+      .cases-copy {
+        padding: 1.2rem 1.2rem 1.3rem;
+      }
+
+      .cases-copy h3 {
+        margin: 0 0 0.45rem;
+        font-size: 1.05rem;
+      }
+
+      .cases-copy p {
+        margin: 0;
+        color: var(--muted-foreground);
+        font-size: 0.94rem;
+      }
+
+      .cases-more {
+        margin-top: 2rem;
+        text-align: center;
+        color: var(--muted-foreground);
+      }
+
+      .cases-more a {
+        color: var(--accent);
+        font-weight: 600;
       }
 
       .publication-item .icon-badge {
         width: 2.5rem;
         height: 2.5rem;
         border-radius: 0.8rem;
+      }
+
+      .publication-item span {
+        margin-right: auto;
+      }
+
+      .publication-open {
+        color: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.75rem;
+        height: 1.75rem;
+        white-space: nowrap;
+      }
+
+      .publication-open svg {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      .publication-modal[hidden] {
+        display: none;
+      }
+
+      .publication-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+        animation: modalFadeIn 0.22s ease;
+      }
+
+      .publication-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 28, 45, 0.55);
+        backdrop-filter: blur(6px);
+        animation: modalBackdropIn 0.22s ease;
+      }
+
+      .publication-modal-panel {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 46rem);
+        max-height: min(90vh, 48rem);
+        overflow: auto;
+        border: 1px solid rgba(22, 53, 82, 0.12);
+        border-radius: 1.25rem;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 28px 60px rgba(10, 28, 45, 0.24);
+        padding: 1.5rem;
+        animation: modalPanelIn 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .publication-modal-top {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .publication-modal-top h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        line-height: 1.2;
+      }
+
+      .publication-modal-close {
+        border: 0;
+        background: transparent;
+        color: var(--muted-foreground);
+        font-size: 1.8rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .publication-meta {
+        margin: 0 0 1rem;
+        color: var(--muted-foreground);
+        font-size: 0.92rem;
+      }
+
+      .publication-modal-panel h4 {
+        margin: 0 0 0.5rem;
+        font-size: 0.95rem;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .publication-abstract {
+        margin: 0;
+        color: var(--foreground);
+      }
+
+      .publication-actions {
+        margin-top: 1.4rem;
       }
 
       .contact-shell {
@@ -669,6 +859,38 @@
         }
       }
 
+      @keyframes modalFadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes modalBackdropIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes modalPanelIn {
+        from {
+          opacity: 0;
+          transform: translateY(14px) scale(0.985);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
       @media (min-width: 48rem) {
         .nav-links {
           display: flex;
@@ -735,6 +957,7 @@
           <a href="#research">Research</a>
           <a href="#team">Team</a>
           <a href="#publications">Publications</a>
+          <a href="#cases">Cases</a>
           <a href="#contact">Contact</a>
         </div>
 
@@ -757,6 +980,7 @@
         <a href="#research">Research</a>
         <a href="#team">Team</a>
         <a href="#publications">Publications</a>
+        <a href="#cases">Cases</a>
         <a href="#contact">Contact</a>
       </div>
     </header>
@@ -995,7 +1219,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Christina Amory</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Christina+Amory%22" target="_blank" rel="noopener noreferrer">Christina Amory</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1005,7 +1229,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Burkhard Berger</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Burkhard+Berger%22" target="_blank" rel="noopener noreferrer">Burkhard Berger</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1015,7 +1239,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Cordula Berger</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Cordula+Berger%22" target="_blank" rel="noopener noreferrer">Cordula Berger</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1025,7 +1249,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Martin Bodner</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Martin+Bodner%22" target="_blank" rel="noopener noreferrer">Martin Bodner</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1035,7 +1259,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Lena Ewers</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Lena+Ewers%22" target="_blank" rel="noopener noreferrer">Lena Ewers</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1045,7 +1269,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Gabriela Huber</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Gabriela+Huber%22" target="_blank" rel="noopener noreferrer">Gabriela Huber</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1055,7 +1279,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Nicole Huber</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Nicole+Huber%22" target="_blank" rel="noopener noreferrer">Nicole Huber</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1065,7 +1289,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Harald Niederstatter</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Harald+Niederstatter%22" target="_blank" rel="noopener noreferrer">Harald Niederstatter</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1075,7 +1299,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Charlotte Sutter</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Charlotte+Sutter%22" target="_blank" rel="noopener noreferrer">Charlotte Sutter</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1085,7 +1309,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Bettina Zimmermann</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Bettina+Zimmermann%22" target="_blank" rel="noopener noreferrer">Bettina Zimmermann</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1095,7 +1319,7 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Melanie Balaz</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Melanie+Balaz%22" target="_blank" rel="noopener noreferrer">Melanie Balaz</a></h3>
               </article>
 
               <article class="card member-card">
@@ -1105,8 +1329,9 @@
                     <path d="M5 20a7 7 0 0 1 14 0"></path>
                   </svg>
                 </div>
-                <h3>Malika Dosmagambetova</h3>
+                <h3><a href="https://scholar.google.com/scholar?q=%22Malika+Dosmagambetova%22" target="_blank" rel="noopener noreferrer">Malika Dosmagambetova</a></h3>
               </article>
+
               </div>
             </div>
           </div>
@@ -1118,49 +1343,156 @@
           <div class="section-header">
             <p class="section-label">Publications</p>
             <h2>Key Research Contributions</h2>
+            <p class="team-grid-intro" style="max-width: 42rem; margin: 1rem auto 0;">
+              For a broader overview of our work, please also visit our
+              <a
+                href="https://scholar.google.com/citations?user=QWza9kEAAAAJ&hl=de"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="color: var(--accent);"
+              >
+                Google Scholar profile
+              </a>.
+            </p>
           </div>
 
           <div class="publication-shell">
-            <article class="publication-item">
-              <div class="icon-badge" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
-                </svg>
-              </div>
-              <span>EMPOP — the EANFSI mitochondrial DNA population database</span>
+            <article class="publication-button publication-item" tabindex="0" role="button" data-publication="empop">
+                <div class="icon-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
+                  </svg>
+                </div>
+                <span>EMPOP — the EANFSI mitochondrial DNA population database</span>
+                <span class="publication-open" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </span>
             </article>
 
-            <article class="publication-item">
-              <div class="icon-badge" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
-                </svg>
-              </div>
-              <span>Massively parallel sequencing in forensic genetics</span>
+            <article class="publication-button publication-item" tabindex="0" role="button" data-publication="mps">
+                <div class="icon-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
+                  </svg>
+                </div>
+                <span>Massively parallel sequencing in forensic genetics</span>
+                <span class="publication-open" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </span>
             </article>
 
-            <article class="publication-item">
-              <div class="icon-badge" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
-                </svg>
-              </div>
-              <span>Quality control standards for forensic DNA typing laboratories</span>
+            <article class="publication-button publication-item" tabindex="0" role="button" data-publication="quality">
+                <div class="icon-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
+                  </svg>
+                </div>
+                <span>Quality control standards for forensic DNA typing laboratories</span>
+                <span class="publication-open" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </span>
             </article>
 
-            <article class="publication-item">
-              <div class="icon-badge" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
-                </svg>
-              </div>
-              <span>DNA-based prediction of externally visible characteristics</span>
+            <article class="publication-button publication-item" tabindex="0" role="button" data-publication="evc">
+                <div class="icon-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
+                  </svg>
+                </div>
+                <span>DNA-based prediction of externally visible characteristics</span>
+                <span class="publication-open" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </span>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section id="cases" class="cases-section">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-label">Cases</p>
+            <h2>Celebrity Genetics</h2>
+          </div>
+
+          <div class="cases-grid">
+            <article class="card cases-card">
+              <div class="cases-image" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <circle cx="9" cy="10" r="2"></circle>
+                  <path d="m21 16-5-5L5 21"></path>
+                </svg>
+              </div>
+              <div class="cases-copy">
+                <h3>Historical Remains</h3>
+                <p>Genetic casework connected to the identification and contextualization of historically significant individuals.</p>
+              </div>
+            </article>
+
+            <article class="card cases-card">
+              <div class="cases-image" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <circle cx="9" cy="10" r="2"></circle>
+                  <path d="m21 16-5-5L5 21"></path>
+                </svg>
+              </div>
+              <div class="cases-copy">
+                <h3>Identity Verification</h3>
+                <p>High-profile forensic investigations where genetics helps verify identity claims or disputed biological relationships.</p>
+              </div>
+            </article>
+
+            <article class="card cases-card">
+              <div class="cases-image" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <circle cx="9" cy="10" r="2"></circle>
+                  <path d="m21 16-5-5L5 21"></path>
+                </svg>
+              </div>
+              <div class="cases-copy">
+                <h3>Media-Relevant Forensics</h3>
+                <p>Selected cases that reached broad public attention and illustrate how forensic genomics can inform headline-making investigations.</p>
+              </div>
+            </article>
+
+            <article class="card cases-card">
+              <div class="cases-image" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <circle cx="9" cy="10" r="2"></circle>
+                  <path d="m21 16-5-5L5 21"></path>
+                </svg>
+              </div>
+              <div class="cases-copy">
+                <h3>Phenotyping Highlights</h3>
+                <p>Illustrative examples showing how ancestry and visible-trait prediction can contribute to investigative leads in notable cases.</p>
+              </div>
+            </article>
+          </div>
+
+          <p class="cases-more">
+            For more cases,
+            <a href="cases.html">click here</a>.
+          </p>
         </div>
       </section>
 
@@ -1220,6 +1552,42 @@
       </div>
     </footer>
 
+    <div id="publication-modal" class="publication-modal" hidden>
+      <div class="publication-modal-backdrop" data-close-publication="true"></div>
+      <div
+        class="publication-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="publication-modal-title"
+      >
+        <div class="publication-modal-top">
+          <h3 id="publication-modal-title"></h3>
+          <button
+            id="publication-modal-close"
+            class="publication-modal-close"
+            type="button"
+            aria-label="Close publication details"
+          >
+            ×
+          </button>
+        </div>
+        <p id="publication-modal-meta" class="publication-meta"></p>
+        <h4>Abstract</h4>
+        <p id="publication-modal-abstract" class="publication-abstract"></p>
+        <div class="publication-actions">
+          <a
+            id="publication-modal-link"
+            class="button button-primary"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open full publication
+          </a>
+        </div>
+      </div>
+    </div>
+
     <script>
       const menuToggle = document.getElementById("menu-toggle");
       const mobileMenu = document.getElementById("mobile-menu");
@@ -1227,8 +1595,45 @@
       const bioToggle = document.getElementById("walther-bio-toggle");
       const bioExtra = document.getElementById("walther-bio-extra");
       const sections = document.querySelectorAll("main section[id]");
+      const publicationButtons = document.querySelectorAll("[data-publication]");
+      const publicationModal = document.getElementById("publication-modal");
+      const publicationModalTitle = document.getElementById("publication-modal-title");
+      const publicationModalMeta = document.getElementById("publication-modal-meta");
+      const publicationModalAbstract = document.getElementById("publication-modal-abstract");
+      const publicationModalLink = document.getElementById("publication-modal-link");
+      const publicationModalClose = document.getElementById("publication-modal-close");
       const menuIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>';
       const closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>';
+      const publicationData = {
+        empop: {
+          title: "EMPOP — a forensic mtDNA database",
+          meta: "Parson W, Dur A. Forensic Science International: Genetics, 2007.",
+          abstract:
+            "EMPOP was developed as a forensic mitochondrial DNA reference database with stronger quality control, standardized data handling, and software-assisted error detection. The work emphasizes that frequency estimates from mtDNA data are only as reliable as the database behind them, so EMPOP focuses on curation, consistency, and public accessibility for casework use.",
+          url: "https://doi.org/10.1016/j.fsigen.2007.01.018"
+        },
+        mps: {
+          title: "Massively parallel sequencing of forensic STRs",
+          meta: "Parson W et al. Forensic Science International: Genetics, 2016.",
+          abstract:
+            "This paper outlines how massively parallel sequencing can improve forensic STR analysis by revealing sequence variation beyond conventional length-based typing. It also argues that adoption requires a standardized nomenclature and data framework so new sequence-based profiles remain comparable with existing capillary electrophoresis databases.",
+          url: "https://doi.org/10.1016/j.fsigen.2016.01.009"
+        },
+        quality: {
+          title: "Quality control of forensic DNA typing laboratories",
+          meta: "Bodner M et al. Forensic Science International: Genetics, 2016.",
+          abstract:
+            "This publication presents STRidER as a centrally curated quality-control platform for autosomal STR frequency databases. Its core message is that forensic population databases need systematic checking, curation, and comparison against established datasets to reduce errors and improve the reliability of statistical interpretation.",
+          url: "https://doi.org/10.1016/j.fsigen.2016.06.008"
+        },
+        evc: {
+          title: "DNA-based prediction of externally visible characteristics",
+          meta: "Kayser M, Schneider PM. Forensic Science International: Genetics, 2009.",
+          abstract:
+            "This paper discusses how DNA-based prediction of visible traits can help in cases where no suspect or database match exists. It reviews the scientific opportunities and limits of predicting traits such as sex, eye color, and hair color, while also addressing the ethical and legal questions that come with using such information in forensic investigations.",
+          url: "https://doi.org/10.1016/j.fsigen.2009.01.012"
+        }
+      };
 
       function setMenuState(open) {
         mobileMenu.classList.toggle("open", open);
@@ -1276,11 +1681,55 @@
         setActiveNav(currentSection);
       }
 
+      function openPublication(publicationKey) {
+        const publication = publicationData[publicationKey];
+        if (!publication) {
+          return;
+        }
+
+        publicationModalTitle.textContent = publication.title;
+        publicationModalMeta.textContent = publication.meta;
+        publicationModalAbstract.textContent = publication.abstract;
+        publicationModalLink.href = publication.url;
+        publicationModal.hidden = false;
+        document.body.style.overflow = "hidden";
+      }
+
+      function closePublication() {
+        publicationModal.hidden = true;
+        document.body.style.overflow = "";
+      }
+
       bioToggle.addEventListener("click", function () {
         const isOpen = bioToggle.getAttribute("aria-expanded") === "true";
         bioExtra.hidden = isOpen;
         bioToggle.setAttribute("aria-expanded", String(!isOpen));
         bioToggle.textContent = isOpen ? "Show more" : "Show less";
+      });
+
+      publicationButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          openPublication(button.dataset.publication);
+        });
+        button.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openPublication(button.dataset.publication);
+          }
+        });
+      });
+
+      publicationModalClose.addEventListener("click", closePublication);
+      publicationModal.addEventListener("click", function (event) {
+        if (event.target.dataset.closePublication === "true") {
+          closePublication();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !publicationModal.hidden) {
+          closePublication();
+        }
       });
 
       document.getElementById("year").textContent = new Date().getFullYear();
