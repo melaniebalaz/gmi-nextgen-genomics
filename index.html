@@ -4,20 +4,1290 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Forensic Genomics — GMI Innsbruck</title>
-    <meta name="description" content="Forensic Genomics research group at the Institute of Legal Medicine, Medical University of Innsbruck. Led by Prof. Walther Parson." />
+    <meta
+      name="description"
+      content="Forensic Genomics research group at the Institute of Legal Medicine, Medical University of Innsbruck. Led by Prof. Walther Parson."
+    />
     <meta name="author" content="GMI Tirol" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#163552" />
+    <link rel="icon" href="public/favicon.ico" />
+    <style>
+      :root {
+        --background: hsl(210 20% 98%);
+        --foreground: hsl(215 25% 15%);
+        --card: hsl(0 0% 100%);
+        --primary: hsl(210 60% 20%);
+        --primary-foreground: hsl(210 20% 98%);
+        --secondary: hsl(185 45% 40%);
+        --muted: hsl(210 15% 93%);
+        --muted-foreground: hsl(215 15% 45%);
+        --accent: hsl(185 55% 45%);
+        --accent-foreground: hsl(0 0% 100%);
+        --border: hsl(214 20% 88%);
+        --ring: hsl(210 60% 20%);
+        --hero-overlay: linear-gradient(
+          135deg,
+          hsla(210, 60%, 12%, 0.85),
+          hsla(185, 45%, 20%, 0.75)
+        );
+        --section-alt: hsl(210 15% 96%);
+        --shadow: 0 20px 50px rgba(10, 28, 45, 0.08);
+      }
 
-    <meta property="og:title" content="Forensic Genomics — GMI Innsbruck" />
-    <meta property="og:description" content="Pioneering research in forensic molecular biology at the Medical University of Innsbruck." />
-    <meta property="og:type" content="website" />
+      * {
+        box-sizing: border-box;
+      }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 3px;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: -3rem;
+        z-index: 100;
+        border-radius: 0.5rem;
+        background: var(--primary);
+        color: var(--primary-foreground);
+        padding: 0.75rem 1rem;
+      }
+
+      .skip-link:focus {
+        top: 1rem;
+      }
+
+      .site-header {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 50;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(22, 53, 82, 0.95);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav-shell,
+      .container {
+        width: min(100% - 2rem, 72rem);
+        margin: 0 auto;
+      }
+
+      .nav-shell {
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        font-size: 1.125rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--primary-foreground);
+      }
+
+      .brand span {
+        margin-left: 0.25rem;
+        color: var(--accent);
+        font-weight: 300;
+      }
+
+      .nav-links {
+        display: none;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .nav-links a,
+      .mobile-menu a {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: rgba(248, 250, 252, 0.8);
+        transition: color 0.2s ease, opacity 0.2s ease;
+      }
+
+      .nav-links a:hover,
+      .mobile-menu a:hover,
+      .footer-links a:hover,
+      .team-link:hover,
+      .contact-link:hover {
+        color: var(--accent);
+      }
+
+      .nav-links a.active,
+      .mobile-menu a.active {
+        color: var(--accent);
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border: 0;
+        border-radius: 0.75rem;
+        background: transparent;
+        color: var(--primary-foreground);
+        cursor: pointer;
+      }
+
+      .menu-toggle svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      .mobile-menu {
+        display: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--primary);
+        padding: 0 1rem 1rem;
+      }
+
+      .mobile-menu.open {
+        display: block;
+      }
+
+      .mobile-menu a {
+        display: block;
+        padding: 0.85rem 0;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .hero-image,
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-overlay {
+        background: var(--hero-overlay);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        width: min(100% - 2rem, 64rem);
+        padding-top: 4rem;
+        text-align: center;
+      }
+
+      .eyebrow {
+        margin: 0 0 1.5rem;
+        color: var(--accent);
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        margin: 0 0 1.5rem;
+        color: var(--primary-foreground);
+        font-size: clamp(3rem, 8vw, 6rem);
+        line-height: 0.95;
+      }
+
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--secondary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-copy {
+        width: min(100%, 42rem);
+        margin: 0 auto 2.5rem;
+        color: rgba(248, 250, 252, 0.8);
+        font-size: clamp(1.05rem, 2vw, 1.3rem);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 12rem;
+        padding: 0.9rem 1.5rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-primary {
+        background: var(--accent);
+        color: var(--accent-foreground);
+      }
+
+      .button-primary:hover {
+        opacity: 0.92;
+      }
+
+      .button-secondary {
+        border: 1px solid rgba(248, 250, 252, 0.3);
+        color: var(--primary-foreground);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .button-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      section {
+        padding: 6rem 0;
+      }
+
+      .section-alt {
+        background: var(--section-alt);
+      }
+
+      .section-header {
+        margin-bottom: 4rem;
+        text-align: center;
+      }
+
+      .section-header h2,
+      .about-copy h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.1;
+      }
+
+      .section-label {
+        margin: 0 0 0.75rem;
+        color: var(--accent);
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .about-grid {
+        display: grid;
+        gap: 3rem;
+      }
+
+      .about-copy p,
+      .research-card p,
+      .team-card p,
+      .publication-item span,
+      .address-copy,
+      .footer {
+        color: var(--muted-foreground);
+      }
+
+      .stats-grid,
+      .research-grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+      }
+
+      .research-grid {
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      }
+
+      .card,
+      .publication-item,
+      .team-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      .card h3,
+      .team-card h3,
+      .publication-item span {
+        color: var(--foreground);
+      }
+
+      .stat-card {
+        text-align: center;
+      }
+
+      .icon-badge {
+        width: 3rem;
+        height: 3rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.9rem;
+        background: rgba(52, 177, 179, 0.12);
+        color: var(--accent);
+      }
+
+      .icon-badge svg {
+        width: 1.4rem;
+        height: 1.4rem;
+      }
+
+      .stat-card .icon-badge {
+        margin-bottom: 0.75rem;
+      }
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--foreground);
+      }
+
+      .stat-label {
+        margin-top: 0.25rem;
+        font-size: 0.8rem;
+        color: var(--muted-foreground);
+      }
+
+      .research-card:hover {
+        border-color: rgba(52, 177, 179, 0.4);
+      }
+
+      .research-card h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .research-card .icon-badge {
+        margin-bottom: 1rem;
+      }
+
+      .team-photo-band {
+        position: relative;
+        padding: 0;
+        background: var(--primary);
+        border-top: 1px solid rgba(255, 255, 255, 0.7);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+      }
+
+      .team-photo-band::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.14);
+        pointer-events: none;
+      }
+
+      .team-photo-band img {
+        width: 100%;
+        height: min(24rem, 33vw);
+        object-fit: cover;
+        object-position: center 31%;
+        display: block;
+      }
+
+      .team-layout {
+        display: grid;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .publication-shell,
+      .contact-shell {
+        width: min(100%, 42rem);
+        margin: 0 auto;
+      }
+
+      .team-shell {
+        width: min(100%, 29rem);
+        margin: 0 auto;
+      }
+
+      .team-card-offset {
+        width: 100%;
+      }
+
+      .team-grid {
+        display: grid;
+        gap: 1rem 0.85rem;
+      }
+
+      .team-grid-wrap {
+        width: 100%;
+        padding: 0.25rem 0 0;
+      }
+
+      .team-grid-title {
+        margin: 0 0 0.35rem;
+        font-size: 1.05rem;
+        color: var(--foreground);
+      }
+
+      .team-grid-intro {
+        margin: 0;
+        font-size: 0.92rem;
+        color: var(--muted-foreground);
+      }
+
+      .team-card {
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .avatar {
+        width: 8.25rem;
+        height: 8.25rem;
+        margin: 0 auto 1.5rem;
+        border-radius: 999px;
+        overflow: hidden;
+        background: rgba(52, 177, 179, 0.12);
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 14%;
+        display: block;
+      }
+
+      .team-role {
+        margin: 0.35rem 0 1rem;
+        color: var(--accent);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .team-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+        margin-top: 2rem;
+      }
+
+      .member-card {
+        padding: 0.35rem 0.15rem;
+        text-align: center;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .member-card h3 {
+        margin: 0.6rem 0 0;
+        font-size: 0.95rem;
+        line-height: 1.25;
+      }
+
+      .portrait {
+        width: 3.9rem;
+        height: 3.9rem;
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: linear-gradient(145deg, rgba(52, 177, 179, 0.18), rgba(22, 53, 82, 0.12));
+        color: var(--accent);
+      }
+
+      .portrait svg {
+        width: 1.45rem;
+        height: 1.45rem;
+      }
+
+      .bio-toggle {
+        margin: 0.5rem 0 0;
+        border: 0;
+        background: transparent;
+        color: var(--accent);
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .bio-extra[hidden] {
+        display: none;
+      }
+
+      .team-link,
+      .contact-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+      }
+
+      .team-link svg,
+      .contact-link svg,
+      .contact-row > svg,
+      .publication-item svg {
+        width: 1rem;
+        height: 1rem;
+        flex: 0 0 auto;
+      }
+
+      .publication-shell {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .publication-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.25rem;
+      }
+
+      .publication-item .icon-badge {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.8rem;
+      }
+
+      .contact-shell {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .contact-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .contact-row > svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: var(--accent);
+        margin-top: 0.15rem;
+      }
+
+      .address-title {
+        margin: 0 0 0.35rem;
+        color: var(--foreground);
+        font-weight: 600;
+      }
+
+      .footer {
+        background: var(--primary);
+        color: rgba(248, 250, 252, 0.72);
+        padding: 3rem 1rem;
+      }
+
+      .footer-shell {
+        width: min(100%, 72rem);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .fade-up {
+        animation: fadeUp 0.6s ease both;
+      }
+
+      .fade-up-delay {
+        animation: fadeUp 0.6s ease 0.2s both;
+      }
+
+      .fade-up-delay-2 {
+        animation: fadeUp 0.6s ease 0.4s both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (min-width: 48rem) {
+        .nav-links {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: none;
+        }
+
+        .hero-actions,
+        .team-links,
+        .footer-shell {
+          flex-direction: row;
+        }
+
+        .about-grid {
+          grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+          align-items: center;
+        }
+
+        .team-layout {
+          grid-template-columns: minmax(22rem, 29rem) minmax(0, 1fr);
+        }
+
+        .team-card-offset {
+          width: calc(100% + 4rem);
+          margin-left: -4rem;
+        }
+
+        .team-grid-wrap {
+          width: calc(100% + 4rem);
+          margin-right: -4rem;
+        }
+
+        .footer-shell {
+          justify-content: space-between;
+          text-align: left;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
   </head>
-
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Primary">
+        <a class="brand" href="#top">GMI<span>Tirol</span></a>
+
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#team">Team</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Open menu"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+        </button>
+      </nav>
+
+      <div id="mobile-menu" class="mobile-menu">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#team">Team</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="top" class="hero">
+        <img
+          class="hero-image"
+          src="assets/hero-bg.jpg"
+          alt="DNA double helix visualization"
+          width="1920"
+          height="1080"
+        />
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+          <p class="eyebrow fade-up">Institute of Legal Medicine · Medical University of Innsbruck</p>
+          <h1 class="fade-up-delay">Forensic<br /><span>Genomics</span></h1>
+          <p class="hero-copy fade-up-delay-2">
+            Pioneering research in forensic molecular biology, from STR analysis and
+            mitochondrial DNA to molecular photofitting and next-generation sequencing.
+          </p>
+          <div class="hero-actions fade-up-delay-2">
+            <a class="button button-primary" href="#research">Explore Research</a>
+            <a class="button button-secondary" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container about-grid">
+          <div class="about-copy">
+            <p class="section-label">About Us</p>
+            <h2>Advancing Forensic Science Through Genomics</h2>
+            <p>
+              In the past 20 years forensic molecular biology has seen substantial
+              technological development. Short Tandem Repeat loci have become the standard
+              for human identification in crime, identity and paternity casework.
+            </p>
+            <p>
+              Our research group contributes across mitochondrial and Y-chromosomal DNA
+              analysis, molecular photofitting, and the prediction of geographic source and
+              physical traits from DNA.
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <article class="card stat-card">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 18h8"></path>
+                  <path d="M3 22h18"></path>
+                  <path d="M14 22a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"></path>
+                  <path d="M9 14h.01"></path>
+                  <path d="M13 10h.01"></path>
+                  <path d="M17 14h.01"></path>
+                </svg>
+              </div>
+              <div class="stat-value">20+</div>
+              <div class="stat-label">Years of Research</div>
+            </article>
+
+            <article class="card stat-card">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 15a7 7 0 0 1 7-7h2"></path>
+                  <path d="M20 9a7 7 0 0 0-7-7h-2"></path>
+                  <path d="M8 9a5 5 0 0 1 5 5v6"></path>
+                  <path d="M16 15a5 5 0 0 1-5-5V4"></path>
+                </svg>
+              </div>
+              <div class="stat-value">200+</div>
+              <div class="stat-label">Publications</div>
+            </article>
+
+            <article class="card stat-card">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 2v7.31"></path>
+                  <path d="M14 9.3V2"></path>
+                  <path d="M8.5 2h7"></path>
+                  <path d="M14 9.3a6 6 0 1 1-4 0"></path>
+                </svg>
+              </div>
+              <div class="stat-value">30+</div>
+              <div class="stat-label">International Projects</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="research" class="section-alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-label">Research Areas</p>
+            <h2>Our Fields of Expertise</h2>
+          </div>
+
+          <div class="research-grid">
+            <article class="card research-card">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 12a3 3 0 1 0 0-6"></path>
+                  <path d="M17.8 14.8a7 7 0 1 0-11.6 0"></path>
+                  <path d="M7 18h10"></path>
+                </svg>
+              </div>
+              <h3>STR Analysis</h3>
+              <p>
+                Short Tandem Repeat profiling as the gold standard for human
+                identification in forensic, paternity and disaster victim identification cases.
+              </p>
+            </article>
+
+            <article class="card research-card">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 15a7 7 0 0 1 7-7h2"></path>
+                  <path d="M20 9a7 7 0 0 0-7-7h-2"></path>
+                  <path d="M8 9a5 5 0 0 1 5 5v6"></path>
+                  <path d="M16 15a5 5 0 0 1-5-5V4"></path>
+                </svg>
+              </div>
+              <h3>Mitochondrial &amp; Y-chromosomal DNA</h3>
+              <p>
+                Research on uniparentally inherited genomes for lineage-based forensic analysis.
+              </p>
+            </article>
+
+            <article class="card research-card">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </div>
+              <h3>Molecular Photofitting</h3>
+              <p>
+                Predicting geographic origin and physical traits from DNA analysis.
+              </p>
+            </article>
+
+            <article class="card research-card">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <ellipse cx="12" cy="5" rx="7" ry="3"></ellipse>
+                  <path d="M5 5v14c0 1.7 3.1 3 7 3s7-1.3 7-3V5"></path>
+                  <path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"></path>
+                </svg>
+              </div>
+              <h3>Next-Generation Sequencing</h3>
+              <p>
+                Massively parallel sequencing applied to forensic genetics for deeper genomic analysis.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="team-photo-band" aria-hidden="true">
+        <img src="assets/team.jpg" alt="" width="2400" height="1200" />
+      </section>
+
+      <section id="team">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-label">Team</p>
+            <h2>Led by Expertise</h2>
+          </div>
+
+          <div class="team-layout">
+            <div class="team-shell">
+              <article class="team-card team-card-offset">
+                <div class="avatar">
+                  <img src="assets/WaltherParson.jpg" alt="Portrait of Walther Parson" width="600" height="600" />
+                </div>
+                <h3>Prof. Walther Parson, PhD</h3>
+                <p class="team-role">Group Leader</p>
+                <p>
+                  Professor at the Institute of Legal Medicine, Medical University of Innsbruck.
+                  His research spans STR analysis, mitochondrial DNA, and molecular photofitting.
+                </p>
+                <div id="walther-bio-extra" class="bio-extra" hidden>
+                  <p>
+                    Walther Parson has helped shape forensic genetics through work on human
+                    identification, lineage markers, mitochondrial DNA databases, quality
+                    standards, and emerging sequencing methods for casework and research.
+                  </p>
+                  <p>
+                    His group combines foundational forensic DNA methods with newer genomic
+                    approaches aimed at ancestry inference, externally visible characteristics,
+                    and robust interpretation standards for real-world forensic applications.
+                  </p>
+                </div>
+                <button
+                  id="walther-bio-toggle"
+                  class="bio-toggle"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="walther-bio-extra"
+                >
+                  Show more
+                </button>
+                <div class="team-links">
+                  <a class="team-link" href="mailto:gmi@i-med.ac.at">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M4 6h16v12H4z"></path>
+                      <path d="m4 7 8 6 8-6"></path>
+                    </svg>
+                    gmi@i-med.ac.at
+                  </a>
+                  <a
+                    class="team-link"
+                    href="https://www.i-med.ac.at/gerichtsmedizin/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M7 17 17 7"></path>
+                      <path d="M7 7h10v10"></path>
+                    </svg>
+                    Institute
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="team-grid-wrap">
+              <h3 class="team-grid-title">Team Members</h3>
+              <p class="team-grid-intro">Core team members at the Forensic Genomics group.</p>
+              <div class="team-grid" aria-label="Team members">
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Christina Amory</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Burkhard Berger</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Cordula Berger</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Martin Bodner</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Lena Ewers</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Gabriela Huber</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Nicole Huber</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Harald Niederstatter</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Charlotte Sutter</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Bettina Zimmermann</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Melanie Balaz</h3>
+              </article>
+
+              <article class="card member-card">
+                <div class="portrait" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </div>
+                <h3>Malika Dosmagambetova</h3>
+              </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="publications" class="section-alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-label">Publications</p>
+            <h2>Key Research Contributions</h2>
+          </div>
+
+          <div class="publication-shell">
+            <article class="publication-item">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
+                </svg>
+              </div>
+              <span>EMPOP — the EANFSI mitochondrial DNA population database</span>
+            </article>
+
+            <article class="publication-item">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
+                </svg>
+              </div>
+              <span>Massively parallel sequencing in forensic genetics</span>
+            </article>
+
+            <article class="publication-item">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
+                </svg>
+              </div>
+              <span>Quality control standards for forensic DNA typing laboratories</span>
+            </article>
+
+            <article class="publication-item">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
+                </svg>
+              </div>
+              <span>DNA-based prediction of externally visible characteristics</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-label">Contact</p>
+            <h2>Get in Touch</h2>
+            <p class="team-grid-intro" style="max-width: 42rem; margin: 1rem auto 0;">
+              We welcome collaborations across forensic genetics, genomics, population research,
+              method development, and related interdisciplinary fields. If you are interested in
+              working with us, we would be glad to hear from you.
+            </p>
+          </div>
+
+          <address class="contact-shell">
+            <div class="contact-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"></path>
+                <circle cx="12" cy="10" r="2.5"></circle>
+              </svg>
+              <div>
+                <p class="address-title">Institute of Legal Medicine</p>
+                <div class="address-copy">
+                  Medical University of Innsbruck<br />
+                  Mullerstrasse 44, 6020 Innsbruck, Austria
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 6h16v12H4z"></path>
+                <path d="m4 7 8 6 8-6"></path>
+              </svg>
+              <a class="contact-link" href="mailto:gmi@i-med.ac.at">gmi@i-med.ac.at</a>
+            </div>
+
+            <div class="contact-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 11.2 19a19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3.2a2 2 0 0 1-.6 1.8l-1.7 1.7a16 16 0 0 0 6 6l1.7-1.7a2 2 0 0 1 1.8-.6l3.2.5a2 2 0 0 1 1.7 2Z"></path>
+              </svg>
+              <div class="address-copy">0512-9003 70600</div>
+            </div>
+          </address>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-shell">
+        <span>© <span id="year"></span> Forensic Genomics — Institute of Legal Medicine, Medical University of Innsbruck</span>
+        <div class="footer-links">
+          <a href="https://www.i-med.ac.at/gerichtsmedizin/" target="_blank" rel="noopener noreferrer">Institute Website</a>
+          <a href="https://www.i-med.ac.at" target="_blank" rel="noopener noreferrer">MUI</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
+      const bioToggle = document.getElementById("walther-bio-toggle");
+      const bioExtra = document.getElementById("walther-bio-extra");
+      const sections = document.querySelectorAll("main section[id]");
+      const menuIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>';
+      const closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>';
+
+      function setMenuState(open) {
+        mobileMenu.classList.toggle("open", open);
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        menuToggle.innerHTML = open ? closeIcon : menuIcon;
+      }
+
+      menuToggle.addEventListener("click", function () {
+        setMenuState(!mobileMenu.classList.contains("open"));
+      });
+
+      navLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+          setMenuState(false);
+        });
+      });
+
+      function setActiveNav(sectionId) {
+        navLinks.forEach(function (link) {
+          const isActive = link.getAttribute("href") === "#" + sectionId;
+          link.classList.toggle("active", isActive);
+          if (isActive) {
+            link.setAttribute("aria-current", "true");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      }
+
+      function updateActiveSection() {
+        const offset = window.scrollY + 120;
+        let currentSection = "about";
+
+        sections.forEach(function (section) {
+          if (offset >= section.offsetTop) {
+            currentSection = section.id;
+          }
+        });
+
+        if (currentSection === "top") {
+          currentSection = "about";
+        }
+
+        setActiveNav(currentSection);
+      }
+
+      bioToggle.addEventListener("click", function () {
+        const isOpen = bioToggle.getAttribute("aria-expanded") === "true";
+        bioExtra.hidden = isOpen;
+        bioToggle.setAttribute("aria-expanded", String(!isOpen));
+        bioToggle.textContent = isOpen ? "Show more" : "Show less";
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+      setMenuState(false);
+      updateActiveSection();
+      window.addEventListener("scroll", updateActiveSection, { passive: true });
+      window.addEventListener("resize", updateActiveSection);
+    </script>
   </body>
 </html>
