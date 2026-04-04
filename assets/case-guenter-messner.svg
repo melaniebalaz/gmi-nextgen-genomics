@@ -1,0 +1,22 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="1020" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#183552"/>
+      <stop offset="1" stop-color="#5FA6A8"/>
+    </linearGradient>
+    <linearGradient id="snow" x1="312" y1="320" x2="312" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5FBFF" stop-opacity=".96"/>
+      <stop offset="1" stop-color="#CDE8EC" stop-opacity=".76"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" rx="36" fill="url(#bg)"/>
+  <circle cx="934" cy="180" r="92" fill="#F3FAFF" fill-opacity=".18"/>
+  <path d="M0 670L180 520L320 580L472 390L630 520L812 290L1000 460L1200 330V900H0V670Z" fill="#0F2438"/>
+  <path d="M0 760L180 640L340 700L540 470L720 650L890 410L1080 560L1200 500V900H0V760Z" fill="#183552"/>
+  <path d="M192 602L314 412L420 564L516 372L654 556L774 336L918 546L1012 456L1106 612" stroke="url(#snow)" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M756 612C756 540 806 502 852 502C902 502 946 544 946 612V734H756V612Z" fill="#E8F6F8" fill-opacity=".14"/>
+  <path d="M838 536C838 508 860 486 888 486C916 486 938 508 938 536C938 566 916 590 888 590C860 590 838 566 838 536Z" fill="#E8F6F8" fill-opacity=".18"/>
+  <path d="M702 746C732 684 786 646 850 628C912 610 970 620 1032 664" stroke="#E8F6F8" stroke-opacity=".28" stroke-width="14" stroke-linecap="round"/>
+  <text x="88" y="790" fill="#E7F5F7" fill-opacity=".94" font-family="Georgia, 'Times New Roman', serif" font-size="66" letter-spacing="2">GUENTER MESSNER</text>
+  <text x="90" y="844" fill="#CDE8EC" fill-opacity=".92" font-family="system-ui, sans-serif" font-size="26" letter-spacing="4">ALPINE IDENTIFICATION</text>
+</svg>

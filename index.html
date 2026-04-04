@@ -341,7 +341,7 @@
       }
 
       .research-grid {
-        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .cases-grid {
@@ -411,6 +411,12 @@
         border-color: rgba(52, 177, 179, 0.4);
       }
 
+      .research-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
       .research-card h3 {
         margin: 0 0 0.5rem;
         font-size: 1.1rem;
@@ -418,6 +424,25 @@
 
       .research-card .icon-badge {
         margin-bottom: 1rem;
+      }
+
+      .research-card-action {
+        margin-top: auto;
+        padding-top: 0.8rem;
+      }
+
+      .research-logo-image {
+        display: block;
+        margin-top: 1rem;
+        width: auto;
+        max-width: 9rem;
+        height: 2.5rem;
+      }
+
+      .team-more {
+        margin: 1.75rem 0 0;
+        text-align: center;
+        color: var(--muted-foreground);
       }
 
       .team-photo-band {
@@ -575,6 +600,25 @@
         cursor: pointer;
       }
 
+      .inline-highlight-button {
+        border: 0;
+        background: transparent;
+        padding: 0;
+        color: var(--accent);
+        font: inherit;
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.14em;
+        cursor: pointer;
+      }
+
+      .research-publications-button {
+        font-size: 0.88rem;
+        font-weight: 500;
+        text-decoration-thickness: 0.06em;
+      }
+
       .bio-extra[hidden] {
         display: none;
       }
@@ -650,6 +694,12 @@
         color: var(--accent);
       }
 
+      .cases-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
       .cases-image svg {
         width: 2.1rem;
         height: 2.1rem;
@@ -706,11 +756,13 @@
         height: 1rem;
       }
 
-      .publication-modal[hidden] {
+      .publication-modal[hidden],
+      .highlight-modal[hidden] {
         display: none;
       }
 
-      .publication-modal {
+      .publication-modal,
+      .highlight-modal {
         position: fixed;
         inset: 0;
         z-index: 120;
@@ -720,7 +772,8 @@
         animation: modalFadeIn 0.22s ease;
       }
 
-      .publication-modal-backdrop {
+      .publication-modal-backdrop,
+      .highlight-modal-backdrop {
         position: absolute;
         inset: 0;
         background: rgba(10, 28, 45, 0.55);
@@ -728,7 +781,8 @@
         animation: modalBackdropIn 0.22s ease;
       }
 
-      .publication-modal-panel {
+      .publication-modal-panel,
+      .highlight-modal-panel {
         position: relative;
         z-index: 1;
         width: min(100%, 46rem);
@@ -742,7 +796,8 @@
         animation: modalPanelIn 0.28s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
-      .publication-modal-top {
+      .publication-modal-top,
+      .highlight-modal-top {
         display: flex;
         align-items: start;
         justify-content: space-between;
@@ -750,13 +805,15 @@
         margin-bottom: 1rem;
       }
 
-      .publication-modal-top h3 {
+      .publication-modal-top h3,
+      .highlight-modal-top h3 {
         margin: 0;
         font-size: 1.3rem;
         line-height: 1.2;
       }
 
-      .publication-modal-close {
+      .publication-modal-close,
+      .highlight-modal-close {
         border: 0;
         background: transparent;
         color: var(--muted-foreground);
@@ -786,6 +843,26 @@
 
       .publication-actions {
         margin-top: 1.4rem;
+      }
+
+      .project-list {
+        margin: 0;
+        padding-left: 1.25rem;
+        color: var(--foreground);
+      }
+
+      .project-list li + li {
+        margin-top: 0.7rem;
+      }
+
+      .publication-placeholder-list {
+        margin: 0;
+        padding-left: 1.25rem;
+        color: var(--foreground);
+      }
+
+      .publication-placeholder-list li + li {
+        margin-top: 0.7rem;
       }
 
       .contact-shell {
@@ -911,6 +988,10 @@
           align-items: center;
         }
 
+        .research-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
         .team-layout {
           grid-template-columns: minmax(22rem, 29rem) minmax(0, 1fr);
         }
@@ -956,7 +1037,6 @@
           <a href="#about">About</a>
           <a href="#research">Research</a>
           <a href="#team">Team</a>
-          <a href="#publications">Publications</a>
           <a href="#cases">Cases</a>
           <a href="#contact">Contact</a>
         </div>
@@ -979,7 +1059,6 @@
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#team">Team</a>
-        <a href="#publications">Publications</a>
         <a href="#cases">Cases</a>
         <a href="#contact">Contact</a>
       </div>
@@ -1016,14 +1095,27 @@
             <p class="section-label">About Us</p>
             <h2>Advancing Forensic Science Through Genomics</h2>
             <p>
-              In the past 20 years forensic molecular biology has seen substantial
+              In the past 30 years forensic molecular biology has seen substantial
               technological development. Short Tandem Repeat loci have become the standard
               for human identification in crime, identity and paternity casework.
             </p>
             <p>
               Our research group contributes across mitochondrial and Y-chromosomal DNA
-              analysis, molecular photofitting, and the prediction of geographic source and
-              physical traits from DNA.
+              analysis, molecular photofitting, and the prediction of biogeographic ancestry,
+              age and physical traits from DNA.
+            </p>
+            <p>
+              We also work in close
+              <button
+                id="collaboration-trigger"
+                class="inline-highlight-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="collaboration-modal"
+              >
+                international collaboration
+              </button>
+              across research networks and joint projects in forensic genetics.
             </p>
           </div>
 
@@ -1039,7 +1131,7 @@
                   <path d="M17 14h.01"></path>
                 </svg>
               </div>
-              <div class="stat-value">20+</div>
+              <div class="stat-value">30+</div>
               <div class="stat-label">Years of Research</div>
             </article>
 
@@ -1052,7 +1144,7 @@
                   <path d="M16 15a5 5 0 0 1-5-5V4"></path>
                 </svg>
               </div>
-              <div class="stat-value">200+</div>
+              <div class="stat-value">500+</div>
               <div class="stat-label">Publications</div>
             </article>
 
@@ -1083,58 +1175,170 @@
             <article class="card research-card">
               <div class="icon-badge" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 12a3 3 0 1 0 0-6"></path>
-                  <path d="M17.8 14.8a7 7 0 1 0-11.6 0"></path>
-                  <path d="M7 18h10"></path>
+                  <circle cx="6" cy="7" r="2"></circle>
+                  <circle cx="18" cy="7" r="2"></circle>
+                  <circle cx="12" cy="17" r="2"></circle>
+                  <path d="M7.7 8.1 10.3 15"></path>
+                  <path d="M16.3 8.1 13.7 15"></path>
+                  <path d="M8 7h8"></path>
                 </svg>
               </div>
-              <h3>STR Analysis</h3>
+              <h3>Forensic population genetics</h3>
               <p>
-                Short Tandem Repeat profiling as the gold standard for human
-                identification in forensic, paternity and disaster victim identification cases.
+                Placeholder text for this research area describing key questions,
+                datasets, and applications in forensic population genetics.
               </p>
+              <div class="research-card-action">
+                <button
+                  class="inline-highlight-button research-publications-button"
+                  type="button"
+                  data-research-publications="Forensic population genetics"
+                >
+                  Publications
+                </button>
+              </div>
             </article>
 
             <article class="card research-card">
               <div class="icon-badge" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 15a7 7 0 0 1 7-7h2"></path>
-                  <path d="M20 9a7 7 0 0 0-7-7h-2"></path>
-                  <path d="M8 9a5 5 0 0 1 5 5v6"></path>
-                  <path d="M16 15a5 5 0 0 1-5-5V4"></path>
+                  <path d="M8 10a4 4 0 0 1 8 0v3a4 4 0 0 1-8 0Z"></path>
+                  <path d="M10 10h.01"></path>
+                  <path d="M14 10h.01"></path>
+                  <path d="M10 14c.6.7 1.3 1 2 1s1.4-.3 2-1"></path>
+                  <path d="M12 3v3"></path>
                 </svg>
               </div>
-              <h3>Mitochondrial &amp; Y-chromosomal DNA</h3>
+              <h3>Forensic DNA Phenotyping</h3>
               <p>
-                Research on uniparentally inherited genomes for lineage-based forensic analysis.
+                Placeholder text for this research area describing phenotype prediction,
+                ancestry inference, and investigative use cases.
               </p>
+              <div class="research-card-action">
+                <button
+                  class="inline-highlight-button research-publications-button"
+                  type="button"
+                  data-research-publications="Forensic DNA Phenotyping"
+                >
+                  Publications
+                </button>
+              </div>
             </article>
 
             <article class="card research-card">
               <div class="icon-badge" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
+                  <circle cx="12" cy="14" r="3"></circle>
+                  <circle cx="7.5" cy="9" r="1.5"></circle>
+                  <circle cx="11" cy="6.5" r="1.5"></circle>
+                  <circle cx="16" cy="6.5" r="1.5"></circle>
+                  <circle cx="19.5" cy="9" r="1.5"></circle>
                 </svg>
               </div>
-              <h3>Molecular Photofitting</h3>
+              <h3>Non-human DNA typing</h3>
               <p>
-                Predicting geographic origin and physical traits from DNA analysis.
+                Placeholder text for this research area describing species identification,
+                wildlife forensics, and non-human trace analysis.
               </p>
+              <div class="research-card-action">
+                <button
+                  class="inline-highlight-button research-publications-button"
+                  type="button"
+                  data-research-publications="Non-human DNA typing"
+                >
+                  Publications
+                </button>
+              </div>
             </article>
 
             <article class="card research-card">
               <div class="icon-badge" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <ellipse cx="12" cy="5" rx="7" ry="3"></ellipse>
-                  <path d="M5 5v14c0 1.7 3.1 3 7 3s7-1.3 7-3V5"></path>
-                  <path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"></path>
+                  <path d="m4 20 6-6"></path>
+                  <path d="m14 6 4-4 4 4-4 4-4-4Z"></path>
+                  <path d="m9 9 6 6"></path>
+                  <path d="m7 11-3 3 6 6 3-3"></path>
                 </svg>
               </div>
-              <h3>Next-Generation Sequencing</h3>
+              <h3>Methods and Technologies</h3>
               <p>
-                Massively parallel sequencing applied to forensic genetics for deeper genomic analysis.
+                Placeholder text for this research area describing sequencing platforms,
+                validation workflows, and analytical method development.
               </p>
+              <div class="research-card-action">
+                <button
+                  class="inline-highlight-button research-publications-button"
+                  type="button"
+                  data-research-publications="Methods and Technologies"
+                >
+                  Publications
+                </button>
+              </div>
+            </article>
+
+            <article class="card research-card">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M4 12h16"></path>
+                  <path d="M12 4a12 12 0 0 1 0 16"></path>
+                  <path d="M12 4a12 12 0 0 0 0 16"></path>
+                </svg>
+              </div>
+              <h3>EMPOP</h3>
+              <p>
+                Placeholder text for this research area describing database curation,
+                international reference data, and forensic mtDNA applications.
+              </p>
+              <img
+                class="research-logo-image"
+                src="assets/empop-logo-placeholder.svg"
+                alt="EMPOP logo placeholder"
+                width="240"
+                height="64"
+              />
+              <div class="research-card-action">
+                <button
+                  class="inline-highlight-button research-publications-button"
+                  type="button"
+                  data-research-publications="EMPOP"
+                >
+                  Publications
+                </button>
+              </div>
+            </article>
+
+            <article class="card research-card">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                  <path d="m8 9 1.5 1.5L12 8"></path>
+                  <path d="m8 14 1.5 1.5L12 13"></path>
+                  <path d="M14 9h2"></path>
+                  <path d="M14 14h2"></path>
+                </svg>
+              </div>
+              <h3>STRIDER</h3>
+              <p>
+                Placeholder text for this research area describing quality control,
+                population data review, and STR database standards.
+              </p>
+              <img
+                class="research-logo-image"
+                src="assets/strider-logo-placeholder.svg"
+                alt="STRIDER logo placeholder"
+                width="240"
+                height="64"
+              />
+              <div class="research-card-action">
+                <button
+                  class="inline-highlight-button research-publications-button"
+                  type="button"
+                  data-research-publications="STRIDER"
+                >
+                  Publications
+                </button>
+              </div>
             </article>
           </div>
         </div>
@@ -1333,93 +1537,18 @@
               </article>
 
               </div>
+              <p class="team-more">
+                <button
+                  id="alumni-trigger"
+                  class="inline-highlight-button"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="alumni-modal"
+                >
+                  List of Alumni
+                </button>
+              </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="publications" class="section-alt">
-        <div class="container">
-          <div class="section-header">
-            <p class="section-label">Publications</p>
-            <h2>Key Research Contributions</h2>
-            <p class="team-grid-intro" style="max-width: 42rem; margin: 1rem auto 0;">
-              For a broader overview of our work, please also visit our
-              <a
-                href="https://scholar.google.com/citations?user=QWza9kEAAAAJ&hl=de"
-                target="_blank"
-                rel="noopener noreferrer"
-                style="color: var(--accent);"
-              >
-                Google Scholar profile
-              </a>.
-            </p>
-          </div>
-
-          <div class="publication-shell">
-            <article class="publication-button publication-item" tabindex="0" role="button" data-publication="empop">
-                <div class="icon-badge" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
-                  </svg>
-                </div>
-                <span>EMPOP — the EANFSI mitochondrial DNA population database</span>
-                <span class="publication-open" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </span>
-            </article>
-
-            <article class="publication-button publication-item" tabindex="0" role="button" data-publication="mps">
-                <div class="icon-badge" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
-                  </svg>
-                </div>
-                <span>Massively parallel sequencing in forensic genetics</span>
-                <span class="publication-open" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </span>
-            </article>
-
-            <article class="publication-button publication-item" tabindex="0" role="button" data-publication="quality">
-                <div class="icon-badge" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
-                  </svg>
-                </div>
-                <span>Quality control standards for forensic DNA typing laboratories</span>
-                <span class="publication-open" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </span>
-            </article>
-
-            <article class="publication-button publication-item" tabindex="0" role="button" data-publication="evc">
-                <div class="icon-badge" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
-                  </svg>
-                </div>
-                <span>DNA-based prediction of externally visible characteristics</span>
-                <span class="publication-open" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </span>
-            </article>
           </div>
         </div>
       </section>
@@ -1428,63 +1557,37 @@
         <div class="container">
           <div class="section-header">
             <p class="section-label">Cases</p>
-            <h2>Celebrity Genetics</h2>
+            <h2>Historic cases</h2>
           </div>
 
           <div class="cases-grid">
             <article class="card cases-card">
               <div class="cases-image" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                  <circle cx="9" cy="10" r="2"></circle>
-                  <path d="m21 16-5-5L5 21"></path>
-                </svg>
+                <img src="assets/case-guenter-messner.svg" alt="" width="1200" height="900" />
               </div>
               <div class="cases-copy">
-                <h3>Historical Remains</h3>
-                <p>Genetic casework connected to the identification and contextualization of historically significant individuals.</p>
+                <h3>Günter Messner</h3>
+                <p>Forensic analysis contributing to the identification of Günter Messner, highlighted in Parson et al. 2007.</p>
               </div>
             </article>
 
             <article class="card cases-card">
               <div class="cases-image" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                  <circle cx="9" cy="10" r="2"></circle>
-                  <path d="m21 16-5-5L5 21"></path>
-                </svg>
+                <img src="assets/case-mozart.svg" alt="" width="1200" height="900" />
               </div>
               <div class="cases-copy">
-                <h3>Identity Verification</h3>
-                <p>High-profile forensic investigations where genetics helps verify identity claims or disputed biological relationships.</p>
+                <h3>Mozart</h3>
+                <p>A historic genetics highlight centered on Mozart, included here as one of the featured landmark cases.</p>
               </div>
             </article>
 
             <article class="card cases-card">
               <div class="cases-image" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                  <circle cx="9" cy="10" r="2"></circle>
-                  <path d="m21 16-5-5L5 21"></path>
-                </svg>
+                <img src="assets/case-schiller.svg" alt="" width="1200" height="900" />
               </div>
               <div class="cases-copy">
-                <h3>Media-Relevant Forensics</h3>
-                <p>Selected cases that reached broad public attention and illustrate how forensic genomics can inform headline-making investigations.</p>
-              </div>
-            </article>
-
-            <article class="card cases-card">
-              <div class="cases-image" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                  <circle cx="9" cy="10" r="2"></circle>
-                  <path d="m21 16-5-5L5 21"></path>
-                </svg>
-              </div>
-              <div class="cases-copy">
-                <h3>Phenotyping Highlights</h3>
-                <p>Illustrative examples showing how ancestry and visible-trait prediction can contribute to investigative leads in notable cases.</p>
+                <h3>Schiller</h3>
+                <p>A historic case highlight focused on Schiller, featured on the landing page as part of the top three examples.</p>
               </div>
             </article>
           </div>
@@ -1552,39 +1655,96 @@
       </div>
     </footer>
 
-    <div id="publication-modal" class="publication-modal" hidden>
-      <div class="publication-modal-backdrop" data-close-publication="true"></div>
+    <div id="collaboration-modal" class="highlight-modal" hidden>
+      <div class="highlight-modal-backdrop" data-close-collaboration="true"></div>
       <div
-        class="publication-modal-panel"
+        class="highlight-modal-panel"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="publication-modal-title"
+        aria-labelledby="collaboration-modal-title"
       >
-        <div class="publication-modal-top">
-          <h3 id="publication-modal-title"></h3>
+        <div class="highlight-modal-top">
+          <h3 id="collaboration-modal-title">Selected International Projects</h3>
           <button
-            id="publication-modal-close"
-            class="publication-modal-close"
+            id="collaboration-modal-close"
+            class="highlight-modal-close"
             type="button"
-            aria-label="Close publication details"
+            aria-label="Close collaboration highlights"
           >
             ×
           </button>
         </div>
-        <p id="publication-modal-meta" class="publication-meta"></p>
-        <h4>Abstract</h4>
-        <p id="publication-modal-abstract" class="publication-abstract"></p>
-        <div class="publication-actions">
-          <a
-            id="publication-modal-link"
-            class="button button-primary"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
+        <p class="publication-meta">
+          A snapshot of collaborative work connecting Innsbruck with international forensic
+          genetics networks.
+        </p>
+        <ul class="project-list">
+          <li>EMPOP, the international forensic mitochondrial DNA population database.</li>
+          <li>STRidER, a collaborative quality-control platform for STR population datasets.</li>
+          <li>VISAGE, advancing forensic DNA phenotyping and ancestry inference in Europe.</li>
+          <li>EDNAP collaborative exercises and shared method development initiatives.</li>
+          <li>Cross-border projects in forensic genomics, sequencing, and population data analysis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="research-publications-modal" class="highlight-modal" hidden>
+      <div class="highlight-modal-backdrop" data-close-research-publications="true"></div>
+      <div
+        class="highlight-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="research-publications-title"
+      >
+        <div class="highlight-modal-top">
+          <h3 id="research-publications-title">Related Publications</h3>
+          <button
+            id="research-publications-close"
+            class="highlight-modal-close"
+            type="button"
+            aria-label="Close related publications"
           >
-            Open full publication
-          </a>
+            ×
+          </button>
         </div>
+        <p class="publication-meta">Placeholder list of publication names for this section.</p>
+        <ul class="publication-placeholder-list">
+          <li>Placeholder Publication Title One</li>
+          <li>Placeholder Publication Title Two</li>
+          <li>Placeholder Publication Title Three</li>
+          <li>Placeholder Publication Title Four</li>
+          <li>Placeholder Publication Title Five</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="alumni-modal" class="highlight-modal" hidden>
+      <div class="highlight-modal-backdrop" data-close-alumni="true"></div>
+      <div
+        class="highlight-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="alumni-title"
+      >
+        <div class="highlight-modal-top">
+          <h3 id="alumni-title">Alumni</h3>
+          <button
+            id="alumni-close"
+            class="highlight-modal-close"
+            type="button"
+            aria-label="Close alumni list"
+          >
+            ×
+          </button>
+        </div>
+        <p class="publication-meta">Placeholder list of alumni names.</p>
+        <ul class="publication-placeholder-list">
+          <li>Placeholder Alumni Name One</li>
+          <li>Placeholder Alumni Name Two</li>
+          <li>Placeholder Alumni Name Three</li>
+          <li>Placeholder Alumni Name Four</li>
+          <li>Placeholder Alumni Name Five</li>
+        </ul>
       </div>
     </div>
 
@@ -1595,45 +1755,18 @@
       const bioToggle = document.getElementById("walther-bio-toggle");
       const bioExtra = document.getElementById("walther-bio-extra");
       const sections = document.querySelectorAll("main section[id]");
-      const publicationButtons = document.querySelectorAll("[data-publication]");
-      const publicationModal = document.getElementById("publication-modal");
-      const publicationModalTitle = document.getElementById("publication-modal-title");
-      const publicationModalMeta = document.getElementById("publication-modal-meta");
-      const publicationModalAbstract = document.getElementById("publication-modal-abstract");
-      const publicationModalLink = document.getElementById("publication-modal-link");
-      const publicationModalClose = document.getElementById("publication-modal-close");
+      const collaborationTrigger = document.getElementById("collaboration-trigger");
+      const collaborationModal = document.getElementById("collaboration-modal");
+      const collaborationModalClose = document.getElementById("collaboration-modal-close");
+      const researchPublicationsButtons = document.querySelectorAll("[data-research-publications]");
+      const researchPublicationsModal = document.getElementById("research-publications-modal");
+      const researchPublicationsTitle = document.getElementById("research-publications-title");
+      const researchPublicationsClose = document.getElementById("research-publications-close");
+      const alumniTrigger = document.getElementById("alumni-trigger");
+      const alumniModal = document.getElementById("alumni-modal");
+      const alumniClose = document.getElementById("alumni-close");
       const menuIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>';
       const closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>';
-      const publicationData = {
-        empop: {
-          title: "EMPOP — a forensic mtDNA database",
-          meta: "Parson W, Dur A. Forensic Science International: Genetics, 2007.",
-          abstract:
-            "EMPOP was developed as a forensic mitochondrial DNA reference database with stronger quality control, standardized data handling, and software-assisted error detection. The work emphasizes that frequency estimates from mtDNA data are only as reliable as the database behind them, so EMPOP focuses on curation, consistency, and public accessibility for casework use.",
-          url: "https://doi.org/10.1016/j.fsigen.2007.01.018"
-        },
-        mps: {
-          title: "Massively parallel sequencing of forensic STRs",
-          meta: "Parson W et al. Forensic Science International: Genetics, 2016.",
-          abstract:
-            "This paper outlines how massively parallel sequencing can improve forensic STR analysis by revealing sequence variation beyond conventional length-based typing. It also argues that adoption requires a standardized nomenclature and data framework so new sequence-based profiles remain comparable with existing capillary electrophoresis databases.",
-          url: "https://doi.org/10.1016/j.fsigen.2016.01.009"
-        },
-        quality: {
-          title: "Quality control of forensic DNA typing laboratories",
-          meta: "Bodner M et al. Forensic Science International: Genetics, 2016.",
-          abstract:
-            "This publication presents STRidER as a centrally curated quality-control platform for autosomal STR frequency databases. Its core message is that forensic population databases need systematic checking, curation, and comparison against established datasets to reduce errors and improve the reliability of statistical interpretation.",
-          url: "https://doi.org/10.1016/j.fsigen.2016.06.008"
-        },
-        evc: {
-          title: "DNA-based prediction of externally visible characteristics",
-          meta: "Kayser M, Schneider PM. Forensic Science International: Genetics, 2009.",
-          abstract:
-            "This paper discusses how DNA-based prediction of visible traits can help in cases where no suspect or database match exists. It reviews the scientific opportunities and limits of predicting traits such as sex, eye color, and hair color, while also addressing the ethical and legal questions that come with using such information in forensic investigations.",
-          url: "https://doi.org/10.1016/j.fsigen.2009.01.012"
-        }
-      };
 
       function setMenuState(open) {
         mobileMenu.classList.toggle("open", open);
@@ -1681,22 +1814,44 @@
         setActiveNav(currentSection);
       }
 
-      function openPublication(publicationKey) {
-        const publication = publicationData[publicationKey];
-        if (!publication) {
-          return;
-        }
-
-        publicationModalTitle.textContent = publication.title;
-        publicationModalMeta.textContent = publication.meta;
-        publicationModalAbstract.textContent = publication.abstract;
-        publicationModalLink.href = publication.url;
-        publicationModal.hidden = false;
+      function openCollaborationModal() {
+        collaborationModal.hidden = false;
+        collaborationTrigger.setAttribute("aria-expanded", "true");
         document.body.style.overflow = "hidden";
       }
 
-      function closePublication() {
-        publicationModal.hidden = true;
+      function closeCollaborationModal() {
+        collaborationModal.hidden = true;
+        collaborationTrigger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+
+      function openResearchPublicationsModal(topic, trigger) {
+        researchPublicationsTitle.textContent = topic + " Publications";
+        researchPublicationsModal.hidden = false;
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", "true");
+        }
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeResearchPublicationsModal() {
+        researchPublicationsModal.hidden = true;
+        researchPublicationsButtons.forEach(function (button) {
+          button.setAttribute("aria-expanded", "false");
+        });
+        document.body.style.overflow = "";
+      }
+
+      function openAlumniModal() {
+        alumniModal.hidden = false;
+        alumniTrigger.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeAlumniModal() {
+        alumniModal.hidden = true;
+        alumniTrigger.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
       }
 
@@ -1707,28 +1862,48 @@
         bioToggle.textContent = isOpen ? "Show more" : "Show less";
       });
 
-      publicationButtons.forEach(function (button) {
+      collaborationTrigger.addEventListener("click", openCollaborationModal);
+
+      collaborationModalClose.addEventListener("click", closeCollaborationModal);
+      collaborationModal.addEventListener("click", function (event) {
+        if (event.target.dataset.closeCollaboration === "true") {
+          closeCollaborationModal();
+        }
+      });
+
+      researchPublicationsButtons.forEach(function (button) {
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-controls", "research-publications-modal");
         button.addEventListener("click", function () {
-          openPublication(button.dataset.publication);
-        });
-        button.addEventListener("keydown", function (event) {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            openPublication(button.dataset.publication);
-          }
+          openResearchPublicationsModal(button.dataset.researchPublications, button);
         });
       });
 
-      publicationModalClose.addEventListener("click", closePublication);
-      publicationModal.addEventListener("click", function (event) {
-        if (event.target.dataset.closePublication === "true") {
-          closePublication();
+      researchPublicationsClose.addEventListener("click", closeResearchPublicationsModal);
+      researchPublicationsModal.addEventListener("click", function (event) {
+        if (event.target.dataset.closeResearchPublications === "true") {
+          closeResearchPublicationsModal();
+        }
+      });
+
+      alumniTrigger.addEventListener("click", openAlumniModal);
+
+      alumniClose.addEventListener("click", closeAlumniModal);
+      alumniModal.addEventListener("click", function (event) {
+        if (event.target.dataset.closeAlumni === "true") {
+          closeAlumniModal();
         }
       });
 
       document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape" && !publicationModal.hidden) {
-          closePublication();
+        if (event.key === "Escape" && !collaborationModal.hidden) {
+          closeCollaborationModal();
+        }
+        if (event.key === "Escape" && !researchPublicationsModal.hidden) {
+          closeResearchPublicationsModal();
+        }
+        if (event.key === "Escape" && !alumniModal.hidden) {
+          closeAlumniModal();
         }
       });
 

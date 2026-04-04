@@ -1,0 +1,29 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="162" y1="84" x2="990" y2="836" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#24375C"/>
+      <stop offset=".55" stop-color="#8B5C4A"/>
+      <stop offset="1" stop-color="#D4A06A"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="722" y1="172" x2="1030" y2="664" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6E4"/>
+      <stop offset="1" stop-color="#E9D6AF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" rx="36" fill="url(#bg)"/>
+  <circle cx="260" cy="190" r="124" fill="#FFF4DB" fill-opacity=".12"/>
+  <rect x="694" y="140" width="298" height="472" rx="18" transform="rotate(7 694 140)" fill="url(#paper)"/>
+  <path d="M758 238L940 260" stroke="#B89155" stroke-width="8" stroke-linecap="round"/>
+  <path d="M748 292L930 314" stroke="#B89155" stroke-width="8" stroke-linecap="round"/>
+  <path d="M738 346L920 368" stroke="#B89155" stroke-width="8" stroke-linecap="round"/>
+  <path d="M728 400L910 422" stroke="#B89155" stroke-width="8" stroke-linecap="round"/>
+  <path d="M718 454L900 476" stroke="#B89155" stroke-width="8" stroke-linecap="round"/>
+  <path d="M710 508L892 530" stroke="#B89155" stroke-width="8" stroke-linecap="round"/>
+  <path d="M230 566C230 472 304 396 392 396H422C512 396 582 470 582 566V700H230V566Z" fill="#122338"/>
+  <ellipse cx="404" cy="334" rx="92" ry="112" fill="#122338"/>
+  <path d="M304 278C330 212 374 186 432 190C492 194 530 228 554 298C516 284 480 278 442 280C390 282 348 296 304 278Z" fill="#F4E1C0"/>
+  <path d="M250 700H612" stroke="#F7E8C8" stroke-opacity=".32" stroke-width="18" stroke-linecap="round"/>
+  <path d="M168 736C264 686 360 666 454 676C554 686 648 736 720 804" stroke="#FFF4DB" stroke-opacity=".28" stroke-width="14" stroke-linecap="round"/>
+  <text x="84" y="790" fill="#FFF4DB" fill-opacity=".94" font-family="Georgia, 'Times New Roman', serif" font-size="70" letter-spacing="2">MOZART</text>
+  <text x="86" y="844" fill="#F0D7B0" fill-opacity=".95" font-family="system-ui, sans-serif" font-size="26" letter-spacing="4">COMPOSER IDENTIFICATION</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="168" y1="94" x2="1024" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1D354E"/>
+      <stop offset=".58" stop-color="#546E8D"/>
+      <stop offset="1" stop-color="#D1B894"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" rx="36" fill="url(#bg)"/>
+  <rect x="692" y="168" width="292" height="430" rx="24" fill="#F7E8CB" fill-opacity=".88"/>
+  <path d="M740 244H938" stroke="#A78C62" stroke-width="10" stroke-linecap="round"/>
+  <path d="M740 300H938" stroke="#A78C62" stroke-width="10" stroke-linecap="round"/>
+  <path d="M740 356H938" stroke="#A78C62" stroke-width="10" stroke-linecap="round"/>
+  <path d="M740 412H938" stroke="#A78C62" stroke-width="10" stroke-linecap="round"/>
+  <path d="M740 468H938" stroke="#A78C62" stroke-width="10" stroke-linecap="round"/>
+  <path d="M740 524H878" stroke="#A78C62" stroke-width="10" stroke-linecap="round"/>
+  <path d="M318 612C318 516 390 436 484 424L530 420C626 408 714 480 726 576L742 700H334L318 612Z" fill="#122338"/>
+  <ellipse cx="502" cy="318" rx="104" ry="122" fill="#122338"/>
+  <path d="M404 288C438 212 490 184 566 202C628 216 668 262 690 328C632 296 574 290 520 292C476 294 440 300 404 288Z" fill="#E9DAC3"/>
+  <path d="M804 146C840 108 888 92 936 100C980 106 1022 132 1048 170" stroke="#F8E9CD" stroke-opacity=".4" stroke-width="12" stroke-linecap="round"/>
+  <text x="84" y="790" fill="#F8E9CD" fill-opacity=".96" font-family="Georgia, 'Times New Roman', serif" font-size="70" letter-spacing="2">SCHILLER</text>
+  <text x="86" y="844" fill="#E5D3B5" fill-opacity=".95" font-family="system-ui, sans-serif" font-size="26" letter-spacing="4">LITERARY HISTORICAL CASE</text>
+</svg>
