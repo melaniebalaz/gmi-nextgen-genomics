@@ -469,6 +469,30 @@
         display: block;
       }
 
+      .cases-photo-band {
+        position: relative;
+        padding: 0;
+        background: var(--primary);
+        border-top: 1px solid rgba(255, 255, 255, 0.7);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+      }
+
+      .cases-photo-band::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.14);
+        pointer-events: none;
+      }
+
+      .cases-photo-band img {
+        width: 100%;
+        height: min(24rem, 33vw);
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
       .team-layout {
         display: grid;
         gap: 2rem;
@@ -1134,6 +1158,17 @@
               </button>
               across research networks and joint projects in forensic genetics.
             </p>
+            <p>
+              An overview of our
+              <a
+                class="inline-highlight-button"
+                href="assets/fundedprojects.pdf"
+                download
+              >
+                funded research projects
+              </a>
+              is available as a downloadable PDF.
+            </p>
           </div>
 
           <div class="stats-grid">
@@ -1202,8 +1237,12 @@
               </div>
               <h3>Forensic population genetics</h3>
               <p>
-                Placeholder text for this research area describing key questions,
-                datasets, and applications in forensic population genetics.
+                The forensic population genetics research focuses on understanding human
+                genetic variation in ways that support robust forensic interpretation.
+                Through innovative studies on ancestry, kinship, and historical
+                identification, the group contributes essential population data and
+                methodological advances that inform both forensic practice and broader
+                questions of human history.
               </p>
               <div class="research-card-action">
                 <button
@@ -1228,8 +1267,12 @@
               </div>
               <h3>Forensic DNA Phenotyping</h3>
               <p>
-                Placeholder text for this research area describing phenotype prediction,
-                ancestry inference, and investigative use cases.
+                The forensic DNA phenotyping research focuses on developing and critically
+                evaluating genetic approaches for predicting externally visible traits,
+                ancestry-related features and estimation of age. Through methodological
+                innovation and interdisciplinary collaboration, the group contributes to a
+                more robust scientific foundation for the forensic application of DNA-based
+                trait inference.
               </p>
               <div class="research-card-action">
                 <button
@@ -1252,16 +1295,19 @@
                   <circle cx="19.5" cy="9" r="1.5"></circle>
                 </svg>
               </div>
-              <h3>Non-human DNA typing</h3>
+              <h3>Non-human Forensic DNA Profiling</h3>
               <p>
-                Placeholder text for this research area describing species identification,
-                wildlife forensics, and non-human trace analysis.
+                Non-human forensic DNA profiling opens new possibilities wherever
+                biological evidence originates from animals rather than people. This group
+                develops and applies genetic tools to analyze such traces, helping to
+                identify species, distinguish individuals, and strengthen the evidential
+                value of non-human DNA in forensic casework.
               </p>
               <div class="research-card-action">
                 <button
                   class="inline-highlight-button research-publications-button"
                   type="button"
-                  data-research-publications="Non-human DNA typing"
+                  data-research-publications="Non-human Forensic DNA Profiling"
                 >
                   Publications
                 </button>
@@ -1279,8 +1325,10 @@
               </div>
               <h3>Methods and Technologies</h3>
               <p>
-                Placeholder text for this research area describing sequencing platforms,
-                validation workflows, and analytical method development.
+                Cutting-edge methods and technologies are at the core of this group's
+                forensic research. By developing and refining advanced sequencing
+                approaches, analytical tools, and laboratory workflows, the group helps
+                drive progress in the reliable analysis of complex genetic evidence.
               </p>
               <div class="research-card-action">
                 <button
@@ -1304,8 +1352,11 @@
               </div>
               <h3>EMPOP</h3>
               <p>
-                Placeholder text for this research area describing database curation,
-                international reference data, and forensic mtDNA applications.
+                EMPOP represents a major infrastructure contribution of Walther's group to
+                forensic genetics. As an internationally established mitochondrial DNA
+                population database, it provides the scientific framework, reference data,
+                and quality standards needed for robust and harmonized mtDNA interpretation
+                across forensic laboratories.
               </p>
               <img
                 class="research-logo-image"
@@ -1337,8 +1388,12 @@
               </div>
               <h3>STRIDER</h3>
               <p>
-                Placeholder text for this research area describing quality control,
-                population data review, and STR database standards.
+                STRidER is one of the major forensic genetics resources developed within
+                this research group, designed to improve the quality, reliability, and
+                usability of STR population data. As a reference database and software
+                platform for forensic analyses, it helps laboratories generate more robust
+                allele frequency estimates and promotes high standards in data curation and
+                interpretation. Martin Bodner is currently the curator of STRidER.
               </p>
               <img
                 class="research-logo-image"
@@ -1433,126 +1488,155 @@
               <h3 class="team-grid-title">Team Members</h3>
               <p class="team-grid-intro">Core team members at the Forensic Genomics group.</p>
               <div class="team-grid" aria-label="Team members">
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Christina+Amory%22" target="_blank" rel="noopener noreferrer">Christina Amory</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Antonia+Heidegger%22" target="_blank" rel="noopener noreferrer">Antonia Heidegger</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Burkhard+Berger%22" target="_blank" rel="noopener noreferrer">Burkhard Berger</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Bettina+Zimmermann%22" target="_blank" rel="noopener noreferrer">Bettina Zimmermann</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Cordula+Berger%22" target="_blank" rel="noopener noreferrer">Cordula Berger</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Burkhard+Berger%22" target="_blank" rel="noopener noreferrer">Burkhard Berger</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Martin+Bodner%22" target="_blank" rel="noopener noreferrer">Martin Bodner</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Charlotte+Sutter%22" target="_blank" rel="noopener noreferrer">Charlotte Sutter</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Lena+Ewers%22" target="_blank" rel="noopener noreferrer">Lena Ewers</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Christina+Amory%22" target="_blank" rel="noopener noreferrer">Christina Amory</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Gabriela+Huber%22" target="_blank" rel="noopener noreferrer">Gabriela Huber</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Cordula+Berger%22" target="_blank" rel="noopener noreferrer">Cordula Berger</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Nicole+Huber%22" target="_blank" rel="noopener noreferrer">Nicole Huber</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Gabriela+Huber%22" target="_blank" rel="noopener noreferrer">Gabriela Huber</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Harald+Niederstatter%22" target="_blank" rel="noopener noreferrer">Harald Niederstatter</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Harald+Niederstatter%22" target="_blank" rel="noopener noreferrer">Harald Niederstätter</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Charlotte+Sutter%22" target="_blank" rel="noopener noreferrer">Charlotte Sutter</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Jana+Scheurer%22" target="_blank" rel="noopener noreferrer">Jana Scheurer</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Bettina+Zimmermann%22" target="_blank" rel="noopener noreferrer">Bettina Zimmermann</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Lena+Ewers%22" target="_blank" rel="noopener noreferrer">Lena Ewers</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Melanie+Balaz%22" target="_blank" rel="noopener noreferrer">Melanie Balaz</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Malika+Dosmagambetova%22" target="_blank" rel="noopener noreferrer">Malika Dosmagambetova</a></h3>
+                </article>
 
-              <article class="card member-card">
-                <div class="portrait" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"></circle>
-                    <path d="M5 20a7 7 0 0 1 14 0"></path>
-                  </svg>
-                </div>
-                <h3><a href="https://scholar.google.com/scholar?q=%22Malika+Dosmagambetova%22" target="_blank" rel="noopener noreferrer">Malika Dosmagambetova</a></h3>
-              </article>
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Martin+Bodner%22" target="_blank" rel="noopener noreferrer">Martin Bodner</a></h3>
+                </article>
 
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Melanie+Balaz%22" target="_blank" rel="noopener noreferrer">Melanie Balaz</a></h3>
+                </article>
+
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Nicole+Huber%22" target="_blank" rel="noopener noreferrer">Nicole Huber</a></h3>
+                </article>
+
+                <article class="card member-card">
+                  <div class="portrait" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="4"></circle>
+                      <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                  </div>
+                  <h3><a href="https://scholar.google.com/scholar?q=%22Petra+Hatzer%22" target="_blank" rel="noopener noreferrer">Petra Hatzer</a></h3>
+                </article>
               </div>
               <p class="team-more">
                 <button
@@ -1562,7 +1646,7 @@
                   aria-expanded="false"
                   aria-controls="alumni-modal"
                 >
-                  List of Alumni
+                  Alumni
                 </button>
               </p>
             </div>
@@ -1580,31 +1664,31 @@
           <div class="cases-grid">
             <article class="card cases-card">
               <div class="cases-image" aria-hidden="true">
-                <img src="assets/case-guenter-messner.svg" alt="" width="1200" height="900" />
+                <img src="assets/birgitte_tengs.png" alt="" width="1200" height="900" />
               </div>
               <div class="cases-copy">
-                <h3>Günter Messner</h3>
-                <p>Forensic analysis contributing to the identification of Günter Messner, highlighted in Parson et al. 2007.</p>
+                <h3>Birgitte Tengs</h3>
+                <p>A landmark Norwegian murder cold case was analyzed with most advanced DNA technology. This paper examines the forensic methods, trial decisions, and eventual appeal in the Birgitte Tengs case, highlighting the risks of confirmation bias, the importance of activity-level interpretation, and the need for stronger scientific frameworks to support fairer justice outcomes.</p>
               </div>
             </article>
 
             <article class="card cases-card">
               <div class="cases-image" aria-hidden="true">
-                <img src="assets/case-mozart.svg" alt="" width="1200" height="900" />
+                <img src="assets/schinderhannes.png" alt="" width="1200" height="900" />
               </div>
               <div class="cases-copy">
-                <h3>Mozart</h3>
-                <p>A historic genetics highlight centered on Mozart, included here as one of the featured landmark cases.</p>
+                <h3>Schinderhannes</h3>
+                <p>For two centuries, two skeletons displayed at Heidelberg University were believed to belong to the notorious criminals Schinderhannes and Hölzerlips. Combining provenance research with isotope analysis, anthropology, genealogy, and DNA testing, this interdisciplinary study re-examines their authenticity and provides compelling new evidence for the identification of Schinderhannes’ remains.</p>
               </div>
             </article>
 
             <article class="card cases-card">
               <div class="cases-image" aria-hidden="true">
-                <img src="assets/case-schiller.svg" alt="" width="1200" height="900" />
+                <img src="assets/kasper_hauser.png" alt="" width="1200" height="900" />
               </div>
               <div class="cases-copy">
-                <h3>Schiller</h3>
-                <p>A historic case highlight focused on Schiller, featured on the landing page as part of the top three examples.</p>
+                <h3>Kaspar Hauser</h3>
+                <p>For nearly two centuries, speculation has surrounded Kaspar Hauser’s possible aristocratic origin and alleged connection to the House of Baden. Combining historical inquiry with modern DNA sequencing, this study revisits one of Europe’s most enduring identity mysteries and provides strong genetic evidence against the long-standing “Prince theory.”</p>
               </div>
             </article>
           </div>
@@ -1622,6 +1706,10 @@
             </button>.
           </p>
         </div>
+      </section>
+
+      <section class="cases-photo-band" aria-hidden="true">
+        <img src="assets/kalkkögel.png" alt="" width="2400" height="1200" />
       </section>
 
       <section id="contact">
@@ -1706,7 +1794,8 @@
         <ul class="project-list">
           <li>EMPOP, the international forensic mitochondrial DNA population database.</li>
           <li>STRidER, a collaborative quality-control platform for STR population datasets.</li>
-          <li>VISAGE, advancing forensic DNA phenotyping and ancestry inference in Europe.</li>
+          <li>CapCell, collaborative research on advanced forensic genomics applications.</li>
+          <li>FORMAT, international cooperation on forensic methodologies and technologies.</li>
           <li>EDNAP collaborative exercises and shared method development initiatives.</li>
           <li>Cross-border projects in forensic genomics, sequencing, and population data analysis.</li>
         </ul>
@@ -1762,13 +1851,50 @@
             ×
           </button>
         </div>
-        <p class="publication-meta">Placeholder list of alumni names.</p>
         <ul class="publication-placeholder-list">
-          <li>Placeholder Alumni Name One</li>
-          <li>Placeholder Alumni Name Two</li>
-          <li>Placeholder Alumni Name Three</li>
-          <li>Placeholder Alumni Name Four</li>
-          <li>Placeholder Alumni Name Five</li>
+          <li>Alexander Röck</li>
+          <li>Allesandra Iuvaro</li>
+          <li>Andjela Stevanovich</li>
+          <li>Andrea Casas-Vargas</li>
+          <li>Anita Brandstätter</li>
+          <li>Anna Esteve Codina</li>
+          <li>Catarina Xavier</li>
+          <li>Catharina Gruber</li>
+          <li>Christaine Bauer</li>
+          <li>Federica Giangasparo</li>
+          <li>Filipa Simao</li>
+          <li>Florian Pitterl</li>
+          <li>Francesca Gandhini</li>
+          <li>Francesco Carano</li>
+          <li>Georg Ausserer</li>
+          <li>Irene Cardinali</li>
+          <li>Janine Wagner</li>
+          <li>Jannika Oeke</li>
+          <li>Joanna Vella</li>
+          <li>Jodi Irwin</li>
+          <li>Josephin Heinrich</li>
+          <li>Julia Halper</li>
+          <li>Katharina Secco</li>
+          <li>Lea Demetz</li>
+          <li>Lea Ortmann</li>
+          <li>Liane Fendt</li>
+          <li>Lisa Bienek</li>
+          <li>Lisa Schnaller</li>
+          <li>Lorenz Decristoforo</li>
+          <li>Marco Capodifero</li>
+          <li>Maria-Bernadette Madel</li>
+          <li>Masinda Nguidi</li>
+          <li>Mayra Eduardoff</li>
+          <li>Myron Eberle</li>
+          <li>Nanna Graue</li>
+          <li>Nina Payr</li>
+          <li>Ollala Amigo</li>
+          <li>Petra Müller</li>
+          <li>Sibylle Gomez</li>
+          <li>Stephanie Vallant</li>
+          <li>Tanja Göbel</li>
+          <li>Tanja Krämer</li>
+          <li>Victoria Plöchl</li>
         </ul>
       </div>
     </div>
