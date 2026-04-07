@@ -584,6 +584,14 @@ section {
   color: inherit;
 }
 
+.team-card h3 a {
+  color: inherit;
+}
+
+.team-card h3 a:hover {
+  color: var(--accent);
+}
+
 .member-card h3 a:hover {
   color: var(--accent);
 }
