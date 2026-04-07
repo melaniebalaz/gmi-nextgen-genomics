@@ -305,6 +305,10 @@ section {
   gap: 3rem;
 }
 
+.about-copy {
+  max-width: 46rem;
+}
+
 .about-copy p,
 .research-card p,
 .team-card p,
@@ -1009,8 +1013,14 @@ section {
   }
 
   .about-grid {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.35fr) minmax(36rem, 1.1fr);
     align-items: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, minmax(12rem, 1fr));
+    width: calc(100% + 4rem);
+    margin-right: -4rem;
   }
 
   .research-grid {
