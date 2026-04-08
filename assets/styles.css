@@ -735,6 +735,14 @@ section {
   font-size: 1.05rem;
 }
 
+.cases-copy h3 a {
+  color: inherit;
+}
+
+.cases-copy h3 a:hover {
+  color: var(--accent);
+}
+
 .cases-copy p {
   margin: 0;
   color: var(--muted-foreground);
