@@ -75,7 +75,7 @@ button {
   inset: 0 0 auto;
   z-index: 50;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(11, 35, 57, 0.95);
+  background: rgba(1, 23, 33, 0.88);
   backdrop-filter: blur(16px);
 }
 
@@ -152,7 +152,7 @@ button {
 .mobile-menu {
   display: none;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background: var(--primary);
+  background: #011721;
   padding: 0 1rem 1rem;
 }
 
@@ -941,7 +941,7 @@ section {
 }
 
 .footer {
-  background: var(--primary);
+  background: #011721;
   color: rgba(248, 250, 252, 0.72);
   padding: 3rem 1rem;
 }
