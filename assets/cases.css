@@ -168,6 +168,14 @@ h1 {
   color: var(--muted-foreground);
 }
 
+.imprint-link {
+  color: var(--primary);
+}
+
+.imprint-link:hover {
+  color: var(--accent);
+}
+
 @media (min-width: 48rem) {
   .case-card {
     grid-template-columns: minmax(16rem, 23rem) minmax(0, 1fr);
