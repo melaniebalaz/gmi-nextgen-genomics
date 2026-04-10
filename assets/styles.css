@@ -224,7 +224,7 @@ button {
 .hero-copy {
   width: min(100%, 42rem);
   margin: 0 auto 2.5rem;
-  color: rgba(248, 250, 252, 0.8);
+  color: rgba(248, 250, 252, 0.96);
   font-size: clamp(1.05rem, 2vw, 1.3rem);
 }
 
