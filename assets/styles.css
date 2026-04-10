@@ -451,9 +451,7 @@ section {
 
 .team-photo-band img {
   width: 100%;
-  height: min(24rem, 33vw);
-  object-fit: cover;
-  object-position: center 31%;
+  height: auto;
   display: block;
 }
 
