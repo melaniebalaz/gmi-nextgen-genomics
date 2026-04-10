@@ -2,11 +2,11 @@
   --background: hsl(210 20% 98%);
   --foreground: hsl(215 25% 15%);
   --card: hsl(0 0% 100%);
-  --primary: hsl(210 60% 20%);
+  --primary: #0b2339;
   --primary-foreground: hsl(210 20% 98%);
   --muted: hsl(210 15% 93%);
   --muted-foreground: hsl(215 15% 45%);
-  --accent: hsl(185 55% 45%);
+  --accent: #4f8ca6;
   --border: hsl(214 20% 88%);
   --shadow: 0 20px 50px rgba(10, 28, 45, 0.08);
 }
@@ -38,7 +38,7 @@ img {
   top: 0;
   z-index: 20;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(22, 53, 82, 0.95);
+  background: rgba(11, 35, 57, 0.95);
   backdrop-filter: blur(16px);
 }
 
@@ -126,7 +126,7 @@ h1 {
 
 .case-media {
   aspect-ratio: 16 / 10;
-  background: linear-gradient(135deg, rgba(22, 53, 82, 0.12), rgba(64, 179, 191, 0.18));
+  background: linear-gradient(135deg, rgba(11, 35, 57, 0.12), rgba(64, 179, 191, 0.18));
 }
 
 .case-media img {
@@ -138,7 +138,7 @@ h1 {
   display: grid;
   place-items: center;
   height: 100%;
-  color: rgba(22, 53, 82, 0.55);
+  color: rgba(11, 35, 57, 0.55);
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.08em;

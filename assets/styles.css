@@ -2,19 +2,19 @@
   --background: hsl(210 20% 98%);
   --foreground: hsl(215 25% 15%);
   --card: hsl(0 0% 100%);
-  --primary: hsl(210 60% 20%);
+  --primary: #0b2339;
   --primary-foreground: hsl(210 20% 98%);
-  --secondary: hsl(185 45% 40%);
+  --secondary: #4f8ca6;
   --muted: hsl(210 15% 93%);
   --muted-foreground: hsl(215 15% 45%);
-  --accent: hsl(185 55% 45%);
+  --accent: #4f8ca6;
   --accent-foreground: hsl(0 0% 100%);
   --border: hsl(214 20% 88%);
-  --ring: hsl(210 60% 20%);
+  --ring: #0b2339;
   --hero-overlay: linear-gradient(
     135deg,
-    hsla(210, 60%, 12%, 0.85),
-    hsla(185, 45%, 20%, 0.75)
+    rgba(0, 0, 0, 0.86),
+    rgba(0, 0, 0, 0.72)
   );
   --section-alt: hsl(210 15% 96%);
   --shadow: 0 20px 50px rgba(10, 28, 45, 0.08);
@@ -75,7 +75,7 @@ button {
   inset: 0 0 auto;
   z-index: 50;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(22, 53, 82, 0.95);
+  background: rgba(11, 35, 57, 0.95);
   backdrop-filter: blur(16px);
 }
 
@@ -601,7 +601,7 @@ section {
   place-items: center;
   border-radius: 999px;
   overflow: hidden;
-  background: linear-gradient(145deg, rgba(52, 177, 179, 0.18), rgba(22, 53, 82, 0.12));
+  background: linear-gradient(145deg, rgba(52, 177, 179, 0.18), rgba(11, 35, 57, 0.12));
   color: var(--accent);
 }
 
@@ -710,7 +710,7 @@ section {
   place-items: center;
   border-bottom: 1px solid var(--border);
   background:
-    linear-gradient(135deg, rgba(52, 177, 179, 0.16), rgba(22, 53, 82, 0.1)),
+    linear-gradient(135deg, rgba(52, 177, 179, 0.16), rgba(11, 35, 57, 0.1)),
     repeating-linear-gradient(
       -45deg,
       rgba(255, 255, 255, 0.62) 0,
@@ -823,7 +823,7 @@ section {
   width: min(100%, 46rem);
   max-height: min(90vh, 48rem);
   overflow: auto;
-  border: 1px solid rgba(22, 53, 82, 0.12);
+  border: 1px solid rgba(11, 35, 57, 0.12);
   border-radius: 1.25rem;
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 28px 60px rgba(10, 28, 45, 0.24);
